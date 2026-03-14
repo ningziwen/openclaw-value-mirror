@@ -1,0 +1,40 @@
+{
+  "name": "openclaw-value-mirror",
+  "version": "0.1.0",
+  "description": "OpenClaw plugin for value mirroring — agents that represent and debate a person's values, beliefs, and worldview.",
+  "type": "module",
+  "license": "MIT",
+  "author": "ningziwen",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ningziwen/openclaw-value-mirror.git"
+  },
+  "keywords": [
+    "openclaw",
+    "openclaw-plugin",
+    "value-mirror",
+    "beliefs",
+    "debate"
+  ],
+  "files": [
+    "index.ts",
+    "openclaw.plugin.json",
+    "skills",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "openclaw": ">=2025.0.0"
+  },
+  "peerDependenciesMeta": {
+    "openclaw": {
+      "optional": true
+    }
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

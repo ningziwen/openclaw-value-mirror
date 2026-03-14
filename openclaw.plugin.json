@@ -1,0 +1,11 @@
+{
+  "id": "openclaw-value-mirror",
+  "name": "Value Mirror",
+  "description": "Agents that faithfully represent a person's values, beliefs, and worldview. Supports owner mode (update beliefs) and readonly mode (debate without modifying beliefs).",
+  "skills": ["./skills"],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}
