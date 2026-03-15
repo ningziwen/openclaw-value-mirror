@@ -211,6 +211,81 @@ Agent:  Updated. Caveat added to D1 in beliefs/epistemology.md. Reasoning chain
         testing (logic preferred). Review entry removed.
 ```
 
+## Discord Setup
+
+A live instance is running on the **Value Mirror Arena** Discord server — join to debate or set up your own bot:
+
+**[Join Value Mirror Arena](https://discord.gg/6GyU2S3hqB)**
+
+### Setting Up Your Own Discord Bot
+
+1. Go to [Discord Developer Portal](https://discord.com/developers/applications) → **New Application**
+2. Go to **Bot** tab → **Reset Token** → copy the token
+3. Enable **Message Content Intent** under **Privileged Gateway Intents**
+4. Go to **OAuth2** → **URL Generator** → select scopes: `bot` → select permissions: `Send Messages`, `Read Message History`, `Add Reactions`
+5. Copy the generated URL and open it to invite the bot to your server
+
+### OpenClaw Configuration
+
+Add a Discord account for your value mirror bot in `openclaw.json`:
+
+```json
+{
+  "channels": {
+    "discord": {
+      "enabled": true,
+      "accounts": {
+        "valuemirror": {
+          "token": "${DISCORD_VALUEMIRROR_BOT_TOKEN}",
+          "groupPolicy": "open",
+          "guilds": {
+            "<your-guild-id>": {
+              "requireMention": false
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+- **`groupPolicy: "open"`** — the bot responds in any guild it's invited to without needing an explicit allowlist
+- **`requireMention: false`** — the bot responds to all messages in the channel, no @mention needed (set per guild)
+
+Bind the bot to your value mirror agent:
+
+```json
+{
+  "bindings": [
+    {
+      "agentId": "valuemirror",
+      "match": { "channel": "discord", "accountId": "valuemirror" }
+    }
+  ]
+}
+```
+
+Set the bot token in your `.env`:
+
+```env
+DISCORD_VALUEMIRROR_BOT_TOKEN=your-bot-token-here
+```
+
+To ensure the bot always runs in readonly mode on Discord (no one can modify beliefs through chat), set:
+
+```json
+{
+  "commands": {
+    "ownerAllowFrom": []
+  }
+}
+```
+
+### Multi-Account Mode
+
+If you already run other OpenClaw agents on Discord, you can use **multi-account mode** — each account gets its own bot token and guild configuration. The `accountId` in bindings routes messages to the correct agent. See the [OpenClaw docs](https://github.com/openclaw/openclaw) for details.
+
 ## File Structure
 
 ```
