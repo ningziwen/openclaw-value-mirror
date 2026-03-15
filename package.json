@@ -1,6 +1,6 @@
 {
   "name": "openclaw-value-mirror",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "OpenClaw plugin for value mirroring — agents that represent and debate a person's values, beliefs, and worldview.",
   "type": "module",
   "license": "MIT",
